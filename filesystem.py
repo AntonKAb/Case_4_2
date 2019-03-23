@@ -15,17 +15,14 @@ def count_files(path):
         names_sum += _object
     if names_sum.count('.') == len(objects_list):
         return len(objects_list)
-    files_list = []
     dir_list = []
     for _object in objects_list:
-        if _object.find('.') != -1:
-            files_list.append(_object)
-        else:
+        if _object.find('.') == -1:
             dir_list.append(_object)
     inside_files = 0
     for _dir in dir_list:
         inside_files += count_files(f'{path}/{_dir}')
-    return len(files_list) + inside_files
+    return len(objects_list) + inside_files
 
 
 def count_bytes(path):
